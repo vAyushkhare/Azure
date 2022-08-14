@@ -65,8 +65,8 @@ resource r_dataLakePrivateContainer 'Microsoft.Storage/storageAccounts/blobServi
   name:'${r_workspaceDataLakeAccount.name}/default/${containerName}'
 }]
 
-//Synapse Workspace without purview
-resource r_synapseWorkspace 'Microsoft.Synapse/workspaces@2021-06-01' = {
+//Synapse Workspace
+resource r_synapseWorkspace 'Microsoft.Synapse/workspaces@2021-06-01' = if(purviewAccountID != ''){
   name:synapseWorkspaceName
   location: resourceLocation
   identity:{
@@ -85,10 +85,10 @@ resource r_synapseWorkspace 'Microsoft.Synapse/workspaces@2021-06-01' = {
     managedVirtualNetworkSettings: (networkIsolationMode == 'vNet')? {
       preventDataExfiltration:true
     }: null
+    purviewConfiguration:{
+      purviewResourceId: purviewAccountID
+    }
   }
-  
-//Synapse Workspace
-
 
   //Dedicated SQL Pool
   resource r_sqlPool 'sqlPools' = if (ctrlDeploySynapseSQLPool == true){
