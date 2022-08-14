@@ -88,7 +88,7 @@ resource r_synapseWorkspace 'Microsoft.Synapse/workspaces@2021-06-01' = if(purvi
   }
   
 //Synapse Workspace
-resource r_synapseWorkspace 'Microsoft.Synapse/workspaces@2021-06-01' = {
+resource r_synapseWorkspace 'Microsoft.Synapse/workspaces@2021-06-01' = if(purviewAccountID != ''){
   name:synapseWorkspaceName
   location: resourceLocation
   identity:{
