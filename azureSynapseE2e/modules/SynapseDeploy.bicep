@@ -65,6 +65,28 @@ resource r_dataLakePrivateContainer 'Microsoft.Storage/storageAccounts/blobServi
   name:'${r_workspaceDataLakeAccount.name}/default/${containerName}'
 }]
 
+//Synapse Workspace without purview
+resource r_synapseWorkspace 'Microsoft.Synapse/workspaces@2021-06-01' = if(purviewAccountID == ''){
+  name:synapseWorkspaceName
+  location: resourceLocation
+  identity:{
+    type:'SystemAssigned'
+  }
+  properties:{
+    defaultDataLakeStorage:{
+      accountUrl: dataLakeStorageAccountUrl
+      filesystem: synapseDefaultContainerName
+    }
+    sqlAdministratorLogin: synapseSqlAdminUserName
+    sqlAdministratorLoginPassword: synapseSqlAdminPassword
+    //publicNetworkAccess: Post Deployment Script will disable public network access for vNet integrated deployments.
+    managedResourceGroupName: synapseManagedRGName
+    managedVirtualNetwork: (networkIsolationMode == 'vNet') ? 'default' : ''
+    managedVirtualNetworkSettings: (networkIsolationMode == 'vNet')? {
+      preventDataExfiltration:true
+    }: null
+  }
+  
 //Synapse Workspace
 resource r_synapseWorkspace 'Microsoft.Synapse/workspaces@2021-06-01' = {
   name:synapseWorkspaceName
