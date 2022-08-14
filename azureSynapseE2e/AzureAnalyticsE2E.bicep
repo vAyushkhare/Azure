@@ -280,8 +280,38 @@ module m_PlatformServicesDeploy 'modules/PlatformServicesDeploy.bicep' = {
   }
 }
 
+//Deploy Core Services: Data Lake Account and Synapse Workspace without purview.
+module m_SynapseDeploy 'modules/SynapseDeploy.bicep' = if (ctrlDeployPurview == false) {
+  name: 'SynapseDeploy'
+  params: {
+    networkIsolationMode: networkIsolationMode
+    resourceLocation: resourceLocation
+    ctrlDeploySynapseSQLPool: ctrlDeploySynapseSQLPool
+    ctrlDeploySynapseSparkPool: ctrlDeploySynapseSparkPool
+    ctrlDeploySynapseADXPool: ctrlDeploySynapseADXPool
+    workspaceDataLakeAccountName: workspaceDataLakeAccountName
+    dataLakeSandpitZoneName: dataLakeSandpitZoneName
+    synapseDefaultContainerName: synapseDefaultContainerName
+    synapseDedicatedSQLPoolName: synapseDedicatedSQLPoolName
+    synapseManagedRGName: synapseManagedRGName
+    synapseSparkPoolMaxNodeCount: synapseSparkPoolMaxNodeCount
+    synapseSparkPoolMinNodeCount: synapseSparkPoolMinNodeCount
+    synapseSparkPoolName: synapseSparkPoolName
+    synapseSparkPoolNodeSize: synapseSparkPoolNodeSize
+    synapseADXPoolName: synapseADXPoolName
+    synapseADXDatabaseName: synapseADXDatabaseName
+    synapseADXPoolMinSize: synapseADXPoolMinSize
+    synapseADXPoolMaxSize:synapseADXPoolMaxSize
+    synapseADXPoolEnableAutoScale: synapseADXPoolEnableAutoScale
+    synapseSqlAdminPassword: synapseSqlAdminPassword
+    synapseSqlAdminUserName: synapseSqlAdminUserName
+    synapseSQLPoolSKU: synapseSQLPoolSKU
+    synapseWorkspaceName: synapseWorkspaceName
+  }
+}
+
 //Deploy Core Services: Data Lake Account and Synapse Workspace.
-module m_SynapseDeploy 'modules/SynapseDeploy.bicep' = {
+module m_SynapseDeploy 'modules/SynapseDeploy.bicep' = if (ctrlDeployPurview == true) {
   name: 'SynapseDeploy'
   dependsOn:[
     m_PurviewDeploy
