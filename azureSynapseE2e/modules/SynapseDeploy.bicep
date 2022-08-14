@@ -66,7 +66,7 @@ resource r_dataLakePrivateContainer 'Microsoft.Storage/storageAccounts/blobServi
 }]
 
 //Synapse Workspace without purview
-resource r_synapseWorkspace 'Microsoft.Synapse/workspaces@2021-06-01' = if(purviewAccountID == ''){
+resource r_synapseWorkspace 'Microsoft.Synapse/workspaces@2021-06-01' = {
   name:synapseWorkspaceName
   location: resourceLocation
   identity:{
@@ -88,29 +88,7 @@ resource r_synapseWorkspace 'Microsoft.Synapse/workspaces@2021-06-01' = if(purvi
   }
   
 //Synapse Workspace
-resource r_synapseWorkspace 'Microsoft.Synapse/workspaces@2021-06-01' = if(purviewAccountID != ''){
-  name:synapseWorkspaceName
-  location: resourceLocation
-  identity:{
-    type:'SystemAssigned'
-  }
-  properties:{
-    defaultDataLakeStorage:{
-      accountUrl: dataLakeStorageAccountUrl
-      filesystem: synapseDefaultContainerName
-    }
-    sqlAdministratorLogin: synapseSqlAdminUserName
-    sqlAdministratorLoginPassword: synapseSqlAdminPassword
-    //publicNetworkAccess: Post Deployment Script will disable public network access for vNet integrated deployments.
-    managedResourceGroupName: synapseManagedRGName
-    managedVirtualNetwork: (networkIsolationMode == 'vNet') ? 'default' : ''
-    managedVirtualNetworkSettings: (networkIsolationMode == 'vNet')? {
-      preventDataExfiltration:true
-    }: null
-    purviewConfiguration:{
-      purviewResourceId: purviewAccountID
-    }
-  }
+
 
   //Dedicated SQL Pool
   resource r_sqlPool 'sqlPools' = if (ctrlDeploySynapseSQLPool == true){
