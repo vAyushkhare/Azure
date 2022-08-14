@@ -292,6 +292,7 @@ module m_SynapseDeploy 'modules/SynapseDeploy.bicep' = if (ctrlDeployPurview == 
     workspaceDataLakeAccountName: workspaceDataLakeAccountName
     dataLakeSandpitZoneName: dataLakeSandpitZoneName
     synapseDefaultContainerName: synapseDefaultContainerName
+    purviewAccountID: ''
     synapseDedicatedSQLPoolName: synapseDedicatedSQLPoolName
     synapseManagedRGName: synapseManagedRGName
     synapseSparkPoolMaxNodeCount: synapseSparkPoolMaxNodeCount
