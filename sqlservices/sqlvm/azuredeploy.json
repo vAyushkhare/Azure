@@ -250,7 +250,7 @@
             }
           ],
           "osDisk": {
-            "createOption": "FromImage",
+            "createOption": "Attach",
             "managedDisk": {
               "storageAccountType": "Premium_LRS"
             }
