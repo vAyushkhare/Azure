@@ -256,11 +256,8 @@
             }
           },
           "imageReference": {
-            "publisher": "MicrosoftSQLServer",
-            "offer": "[parameters('imageOffer')]",
-            "sku": "[parameters('sqlSku')]",
-            "version": "latest"
-          }
+                        "id": "/subscriptions/cbb956ec-6c04-42ae-8428-91d91154f780/resourceGroups/az-labs-aashik-testwithsqlvm-rg/providers/Microsoft.Compute/images/azlabssqlvm-image-20220816141300"
+                    }
         },
         "networkProfile": {
           "networkInterfaces": [
