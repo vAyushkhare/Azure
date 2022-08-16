@@ -1,0 +1,727 @@
+{
+	"name": "LakeDB - Product recommendations",
+	"properties": {
+		"folder": {
+			"name": "Retail Recommendation"
+		},
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "SampleSpark",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "56g",
+			"driverCores": 8,
+			"executorMemory": "56g",
+			"executorCores": 8,
+			"numExecutors": 1,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "1",
+				"spark.dynamicAllocation.maxExecutors": "1",
+				"spark.autotune.trackingId": "5622504a-ea67-4ae9-aa8b-433bf7e4b168"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/18fe7d2e-5a63-474d-b00b-7dc28b16f41a/resourceGroups/E2E-Analytics-Synapse-Core/providers/Microsoft.Synapse/workspaces/azsynapsewksgo2d3/bigDataPools/SampleSpark",
+				"name": "SampleSpark",
+				"type": "Spark",
+				"endpoint": "https://azsynapsewksgo2d3.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/SampleSpark",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "3.1",
+				"nodeCount": 3,
+				"cores": 8,
+				"memory": 56,
+				"automaticScaleJobs": false
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# Retail Recommendation Accelerator Quickstart: Model Training\r\n",
+					"\r\n",
+					"\r\n",
+					"This notebook uses data from a database modeled based on a Retail Database Template. It trains a LightGBM machine learning model for product recommendation. The tables and columns used in this Notebook are only a minimum set and the solution needs to be customized to your own needs, by adding additional columns and features."
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"import logging\r\n",
+					"logging.getLogger(\"py4j\").setLevel(logging.ERROR)\r\n",
+					"\r\n",
+					"import pandas as pd\r\n",
+					"import seaborn as sns\r\n",
+					"from matplotlib import pyplot as plt\r\n",
+					"\r\n",
+					"from pyspark.version import __version__ as pyspark_version\r\n",
+					"import pyspark.sql.functions as F\r\n",
+					"\r\n",
+					"import mmlspark\r\n",
+					"from mmlspark.train import ComputeModelStatistics\r\n",
+					"from mmlspark.lightgbm import LightGBMClassifier\r\n",
+					"from pyspark.ml.feature import VectorAssembler\r\n",
+					"\r\n",
+					"pd.set_option('display.max_columns', 50)\r\n",
+					"\r\n",
+					"print(f\"PySpark version: {pyspark_version}\")\r\n",
+					"print(f\"MMLSpark version: {mmlspark.core.__spark_package_version__}\")"
+				],
+				"execution_count": 31
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"## Parameters\r\n",
+					""
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"# #This solution uses selected tables from your Retail Database Template. \r\n",
+					"# Make sure you update the names if you have used custom table names. You will also need to customize the columns to use and ideally add more columns. \r\n",
+					"# This AI solution will use a minimum number of tables and columns to provide a baseline for further customization\r\n",
+					"TRANSACTION_LINE_TABLE = \"adworkstarget.FactSales\"\r\n",
+					"RETAIL_PRODUCT_TABLE = \"adworkstarget.DimProduct\"\r\n",
+					"CUSTOMER_TABLE = \"adworkstarget.DimCustomer\""
+				],
+				"execution_count": 32
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"# Data parameters\r\n",
+					"LABEL_COL = \"Rating\"\r\n",
+					"FEATURE_COL = \"features\"\r\n",
+					"RATIO = 0.8\r\n",
+					"SEED = 42\r\n",
+					"\r\n",
+					"# Model parameters\r\n",
+					"OBJECTIVE = \"binary\"\r\n",
+					"BOOSTING = \"gbdt\"\r\n",
+					"NUM_LEAVES = 32\r\n",
+					"NUM_ITERATIONS = 100\r\n",
+					"LEARNING_RATE = 0.1\r\n",
+					"FEATURE_FRACTION = 0.8\r\n",
+					"EARLY_STOPPING_ROUND = 10\r\n",
+					"MODEL_NAME = \"lgb-quickstart\"\r\n",
+					""
+				],
+				"execution_count": 33
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"## Read the data from Spark table"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"def read_from_synms(storage_name, **kwargs):\r\n",
+					"    \"\"\"Read a PySpark dataframe from SynMS\r\n",
+					"    \r\n",
+					"    Args: \r\n",
+					"        storage_name (str): Name of the storage table\r\n",
+					"\r\n",
+					"    Returns:\r\n",
+					"        spark.DataFrame: Dataset\r\n",
+					"    \"\"\"\r\n",
+					"    query = \"SELECT * FROM \" + storage_name\r\n",
+					"    return spark.sql(query)"
+				],
+				"execution_count": 34
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"transaction_line_df = read_from_synms(TRANSACTION_LINE_TABLE)\r\n",
+					"print(\"Transaction Line Data Schema: \")\r\n",
+					"transaction_line_df.printSchema()\r\n",
+					"\r\n",
+					"retail_product_df = read_from_synms(RETAIL_PRODUCT_TABLE)\r\n",
+					"print(\"Retail Product Data Schema: \")\r\n",
+					"retail_product_df.printSchema()\r\n",
+					"\r\n",
+					"customer_df = read_from_synms(CUSTOMER_TABLE)\r\n",
+					"print(\"Customer Data Schema: \")\r\n",
+					"customer_df.printSchema()"
+				],
+				"execution_count": 35
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"#transaction_line_df = transaction_line_df.drop(\"ItemSku\",\"UniversalProductCode\")\r\n",
+					"customer_df = customer_df.drop(\"ChannelKey\",\"GeographyKey\")"
+				],
+				"execution_count": 36
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"## Join dataframes"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# After reading each table into a dataframe in a previous step, we will now join the dataframes\r\n",
+					"raw_data = transaction_line_df.join(F.broadcast(retail_product_df), \"ProductKey\").na.drop()\r\n",
+					"raw_data = raw_data.join(F.broadcast(customer_df), \"CustomerKey\").na.drop()\r\n",
+					"raw_data = raw_data.drop(\"Customer\", \"CustomerId\", \"Product\",\"ProductId\", \"UnitPriceDiscountPct\",\"SKU\",\"ListPrice\",\"TotalProductCost\",\"ProductStandardCost\",\"ExtendedAmount\",\"StandardCost\")\r\n",
+					"\r\n",
+					"print(\"Schema: \")\r\n",
+					"raw_data.printSchema()\r\n",
+					"\r\n",
+					"df = raw_data.toPandas()\r\n",
+					"print(\"Shape: \", df.shape)"
+				],
+				"execution_count": 38
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"## Data visualization"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"df.describe()\r\n",
+					""
+				],
+				"execution_count": 26
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"# calculate the correlation matrix\r\n",
+					"corr = df.corr()\r\n",
+					"\r\n",
+					"# plot the correlation heatmap\r\n",
+					"fig, ax = plt.subplots(figsize=(10,10))         # Sample figsize in inches\r\n",
+					"\r\n",
+					"sns.heatmap(corr, \r\n",
+					"            xticklabels=corr.columns, \r\n",
+					"            yticklabels=corr.columns, \r\n",
+					"            cmap='RdBu', \r\n",
+					"            vmin=-1, \r\n",
+					"            vmax=1, \r\n",
+					"            ax=ax, \r\n",
+					"            annot=True,\r\n",
+					"            fmt='.2f', \r\n",
+					"            annot_kws={'size': 10})\r\n",
+					"plt.show()"
+				],
+				"execution_count": 27
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"#scatterplot\r\n",
+					"sns.set()\r\n",
+					"sns.pairplot(df, height=2.5)\r\n",
+					"plt.show()"
+				],
+				"execution_count": 28
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"## Split the data into train, test\r\n",
+					"\r\n",
+					""
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"raw_train, raw_test = raw_data.randomSplit([RATIO, 1 - RATIO], seed=SEED)\n",
+					"print(\"Train: (rows, columns) = {}\".format((raw_train.count(), len(raw_train.columns))))\n",
+					"print(\"Test: (rows, columns) = {}\".format((raw_test.count(), len(raw_test.columns))))"
+				],
+				"execution_count": null
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"## Feature engineering \n",
+					"Transform the original data feature columns into feature vectors"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"columns = raw_data.columns[3:] # change this to your corresponding column names\n",
+					"featurizer = VectorAssembler(inputCols=columns, outputCol=FEATURE_COL)\n",
+					"train = featurizer.transform(raw_train)[LABEL_COL, FEATURE_COL]\n",
+					"test = featurizer.transform(raw_test)[LABEL_COL, FEATURE_COL]"
+				],
+				"execution_count": null
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"# Check if data is unbalanced\n",
+					"display(train.groupBy(LABEL_COL).count())\n",
+					""
+				],
+				"execution_count": null
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"## Model Training\n",
+					""
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"lgbm = LightGBMClassifier(\n",
+					"    labelCol=LABEL_COL,\n",
+					"    featuresCol=FEATURE_COL,\n",
+					"    objective=OBJECTIVE,\n",
+					"    isUnbalance=False,\n",
+					"    boostingType=BOOSTING,\n",
+					"    boostFromAverage=True,\n",
+					"    baggingSeed=SEED,\n",
+					"    numLeaves=NUM_LEAVES,\n",
+					"    numIterations=NUM_ITERATIONS,\n",
+					"    learningRate=LEARNING_RATE,\n",
+					"    featureFraction=FEATURE_FRACTION,\n",
+					"    earlyStoppingRound=EARLY_STOPPING_ROUND\n",
+					")\n",
+					""
+				],
+				"execution_count": null
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"model = lgbm.fit(train)"
+				],
+				"execution_count": null
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"## Feature Importances"
+				]
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"feature_importances = model.getFeatureImportances()\n",
+					"fi = pd.Series(feature_importances,index = columns)\n",
+					"fi = fi.sort_values(ascending = True)\n",
+					"f_index = fi.index\n",
+					"f_values = fi.values\n",
+					" \n",
+					"# print feature importances \n",
+					"print ('f_index:',f_index)\n",
+					"print ('f_values:',f_values)\n",
+					"\n",
+					"# plot\n",
+					"x_index = list(range(len(fi)))\n",
+					"x_index = [x/len(fi) for x in x_index]\n",
+					"plt.rcParams['figure.figsize'] = (10,10)\n",
+					"plt.barh(x_index,f_values,height = 0.028 ,align=\"center\",color = 'tan',tick_label=f_index)\n",
+					"plt.xlabel('importances')\n",
+					"plt.ylabel('features')\n",
+					"plt.show()"
+				],
+				"execution_count": null
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"## Model Prediction"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"predictions = model.transform(test)\r\n",
+					""
+				],
+				"execution_count": null
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"display(predictions.limit(10))"
+				],
+				"execution_count": null
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"## Evaluation"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"evaluator = (\n",
+					"    ComputeModelStatistics()\n",
+					"    .setScoredLabelsCol(\"prediction\")\n",
+					"    .setLabelCol(LABEL_COL)\n",
+					"    .setEvaluationMetric(\"classification\")\n",
+					")\n",
+					"\n",
+					"metrics = evaluator.transform(predictions)"
+				],
+				"execution_count": null
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"display(metrics)"
+				],
+				"execution_count": null
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"## Save the model\r\n",
+					"\r\n",
+					"Save the model to linked ADLS"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"import os\r\n",
+					"\r\n",
+					"foldername = '/azsynapsewksgo2d3/'\r\n",
+					"\r\n",
+					"print(MODEL_NAME)\r\n",
+					"model_path = os.path.join(foldername,'models/fromLakeDB/',MODEL_NAME)\r\n",
+					"\r\n",
+					"(model\r\n",
+					" .write()\r\n",
+					" .overwrite()\r\n",
+					" .save(model_path)\r\n",
+					" )\r\n",
+					""
+				],
+				"execution_count": null
+			}
+		]
+	}
+}
