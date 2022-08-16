@@ -64,7 +64,7 @@
     },
     "ctrlDeploySampleArtifacts": {
       "type": "bool",
-      "defaultValue": false
+      "defaultValue": true
     },
     "sampleArtifactCollectionName": {
       "type": "string",
