@@ -250,7 +250,7 @@
             }
           ],
           "osDisk": {
-            "createOption": "Attach",
+            "createOption": "Empty",
             "managedDisk": {
               "storageAccountType": "Premium_LRS"
             }
