@@ -1,0 +1,34 @@
+{
+	"name": "GithubFiles",
+	"properties": {
+		"parameters": {
+			"githubAccount": {
+				"type": "string"
+			},
+			"projectName": {
+				"type": "string"
+			},
+			"branch": {
+				"type": "string",
+				"defaultValue": "main"
+			},
+			"folderPath": {
+				"type": "string"
+			},
+			"fileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "@{concat('https://raw.githubusercontent.com/',linkedService().githubAccount,'/',linkedService().projectName,'/',linkedService().branch,'/',linkedService().folderPath,'/',linkedService().fileName)}",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

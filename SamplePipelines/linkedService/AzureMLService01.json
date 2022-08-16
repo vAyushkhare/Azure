@@ -1,0 +1,18 @@
+{
+	"name": "AzureMLService01",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureMLService",
+		"typeProperties": {
+			"subscriptionId": "18fe7d2e-5a63-474d-b00b-7dc28b16f41a",
+			"resourceGroupName": "jchinchilla-rg",
+			"mlWorkspaceName": "jchinchilla-workspace",
+			"authentication": "MSI"
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
