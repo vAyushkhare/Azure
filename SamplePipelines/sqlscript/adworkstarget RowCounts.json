@@ -1,0 +1,17 @@
+{
+	"name": "adworkstarget RowCounts",
+	"properties": {
+		"content": {
+			"query": "SELECT 'DimChannel' as [TableName], count(*) as [RowCount]\n FROM [adworkstarget].[dbo].[DimChannel]\nUNION ALL\n SELECT 'DimCustomer' as [TableName], count(*) as [RowCount]\n FROM [adworkstarget].[dbo].[DimCustomer]\nUNION ALL\n SELECT 'DimProduct' as [TableName], count(*) as [RowCount]\n FROM [adworkstarget].[dbo].[DimProduct]\nUNION ALL\n SELECT 'DimGeography' as [TableName], count(*) as [RowCount]\n FROM [adworkstarget].[dbo].[DimGeography]\nUNION ALL\n SELECT 'DimProduct' as [TableName], count(*) as [RowCount]\n FROM [adworkstarget].[dbo].[DimProduct]\nUNION ALL\n SELECT 'FactSales' as [TableName], count(*) as [RowCount]\n FROM [adworkstarget].[dbo].[FactSales]\n ",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "adworkstarget",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

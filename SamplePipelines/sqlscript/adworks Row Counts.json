@@ -1,0 +1,17 @@
+{
+	"name": "adworks Row Counts",
+	"properties": {
+		"content": {
+			"query": " SELECT 'InternetCustomer' as [TableName], count(*) as [RowCount]\n FROM [adworks].[dbo].[InternetCustomer]\nUNION ALL\n SELECT 'Reseller' as [TableName], count(*) as [RowCount]\n FROM [adworks].[dbo].[Reseller]\nUNION ALL\n SELECT 'Calendar' as [TableName], count(*) as [RowCount]\n FROM [adworks].[dbo].[Calendar]\nUNION ALL\n SELECT 'ProductData' as [TableName], count(*) as [RowCount]\n FROM [adworks].[dbo].[ProductData]\nUNION ALL\n SELECT 'Reseller' as [TableName], count(*) as [RowCount]\n FROM [adworks].[dbo].[Reseller]\nUNION ALL\n SELECT 'Sales' as [TableName], count(*) as [RowCount]\n FROM [adworks].[dbo].[Sales]\nUNION ALL\n SELECT 'SalesTerritory' as [TableName], count(*) as [RowCount]\n FROM [adworks].[dbo].[SalesTerritory]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "adworks",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
