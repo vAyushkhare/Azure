@@ -1,0 +1,42 @@
+{
+	"name": "GithubCSVFiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GithubFiles",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"githubAccount": "jchinchillaMSFT",
+				"projectName": "ww-csu-psk-synapse-retail",
+				"branch": "main",
+				"folderPath": {
+					"value": "@dataset().folderPath",
+					"type": "Expression"
+				},
+				"fileName": {
+					"value": "@dataset().fileName",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			},
+			"folderPath": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
