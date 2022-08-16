@@ -256,7 +256,7 @@
             }
           },
           "imageReference": {
-                        "id": "/subscriptions/cbb956ec-6c04-42ae-8428-91d91154f780/resourceGroups/az-labs-aashik-testwithsqlvm-rg/providers/Microsoft.Compute/images/azlabssqlvm-image-20220816141300"
+                        "id": "/subscriptions/cbb956ec-6c04-42ae-8428-91d91154f780/resourceGroups/az-labs-aashik-createdwithsqlvmimage-rg/providers/Microsoft.Compute/images/azlabssqlvm-image-20220816194010"
                     }
         },
         "networkProfile": {
