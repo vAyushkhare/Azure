@@ -1,0 +1,141 @@
+{
+	"name": "2_2 Load CSV data to adworks",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get File List",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "Raw",
+						"type": "DatasetReference",
+						"parameters": {
+							"folderPath": {
+								"value": "@variables('adworksSourceFolderPath')",
+								"type": "Expression"
+							}
+						}
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get File List",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get File List').output.childItems",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Load adworks",
+							"type": "ExecuteDataFlow",
+							"dependsOn": [
+								{
+									"activity": "Set tableName",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "1.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataflow": {
+									"referenceName": "adworks_DF",
+									"type": "DataFlowReference",
+									"parameters": {
+										"tableName": {
+											"value": "'@{variables('tableName')}'",
+											"type": "Expression"
+										}
+									},
+									"datasetParameters": {
+										"CSVSource": {
+											"fileName": {
+												"value": "@item().name",
+												"type": "Expression"
+											},
+											"folderPath": {
+												"value": "@variables('adworksSourceFolderPath')",
+												"type": "Expression"
+											}
+										}
+									}
+								},
+								"compute": {
+									"coreCount": 8,
+									"computeType": "General"
+								},
+								"traceLevel": "Fine"
+							}
+						},
+						{
+							"name": "Set tableName",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "tableName",
+								"value": {
+									"value": "@replace(item().name,'.csv','')",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"concurrency": 2,
+		"variables": {
+			"adworksSourceFolderPath": {
+				"type": "String",
+				"defaultValue": "AdventureWorks/CSV-Source"
+			},
+			"tableName": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "2. adworks"
+		},
+		"annotations": []
+	}
+}

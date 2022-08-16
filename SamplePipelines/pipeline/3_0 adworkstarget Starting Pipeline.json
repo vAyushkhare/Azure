@@ -1,0 +1,66 @@
+{
+	"name": "3_0 adworkstarget Starting Pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Independent Dimensions",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "3_1 IndependentDimensions",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Dependent Dimensions",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Independent Dimensions",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "3_2 DependentDimensions",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Fact Tables",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Dependent Dimensions",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "3_3 FactTables",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "3. adworkstarget"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-04-12T04:53:12Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

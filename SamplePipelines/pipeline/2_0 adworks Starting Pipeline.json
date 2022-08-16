@@ -1,0 +1,52 @@
+{
+	"name": "2_0 adworks Starting Pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Execute Copy CSV data from Github",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "2_1 Copy CSV data from GitHub",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Execute Load CSV data to adworks",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Execute Copy CSV data from Github",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "2_2 Load CSV data to adworks",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"variables": {
+			"adworksSourceFolderPath": {
+				"type": "String",
+				"defaultValue": "AdventureWorks/CSV-Source"
+			}
+		},
+		"folder": {
+			"name": "2. adworks"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-04-12T04:49:18Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}
