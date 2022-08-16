@@ -1,0 +1,23 @@
+{
+	"name": "relationship-totwwgkoye",
+	"properties": {
+		"Name": "relationship-totwwgkoye",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "adworkstarget"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "FactSales",
+		"ToTableName": "DimGeography",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "GeographyKey",
+				"ToColumnName": "GeographyKey"
+			}
+		],
+		"RelationshipType": 0
+	},
+	"type": "RELATIONSHIP"
+}

@@ -1,0 +1,23 @@
+{
+	"name": "relationship-jxeuttwzli",
+	"properties": {
+		"Name": "relationship-jxeuttwzli",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "adworkstarget"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "FactSales",
+		"ToTableName": "DimCustomer",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "CustomerKey",
+				"ToColumnName": "CustomerKey"
+			}
+		],
+		"RelationshipType": 0
+	},
+	"type": "RELATIONSHIP"
+}

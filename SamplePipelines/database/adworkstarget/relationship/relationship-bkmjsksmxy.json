@@ -1,0 +1,23 @@
+{
+	"name": "relationship-bkmjsksmxy",
+	"properties": {
+		"Name": "relationship-bkmjsksmxy",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "adworkstarget"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "FactSales",
+		"ToTableName": "DimChannel",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ChannelKey",
+				"ToColumnName": "ChannelKey"
+			}
+		],
+		"RelationshipType": 0
+	},
+	"type": "RELATIONSHIP"
+}

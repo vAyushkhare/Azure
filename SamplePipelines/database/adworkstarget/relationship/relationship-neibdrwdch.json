@@ -1,0 +1,23 @@
+{
+	"name": "relationship-neibdrwdch",
+	"properties": {
+		"Name": "relationship-neibdrwdch",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "adworkstarget"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "FactSales",
+		"ToTableName": "DimDate",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "OrderDateKey",
+				"ToColumnName": "DateKey"
+			}
+		],
+		"RelationshipType": 0
+	},
+	"type": "RELATIONSHIP"
+}
