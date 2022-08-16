@@ -1007,7 +1007,7 @@
                 "managedVirtualNetwork": "[if(equals(parameters('networkIsolationMode'), 'vNet'), 'default', '')]",
                 "managedVirtualNetworkSettings": "[if(equals(parameters('networkIsolationMode'), 'vNet'), createObject('preventDataExfiltration', true()), null())]",
                 "purviewConfiguration": {
-                  "purviewResourceId": "[parameters('purviewAccountID')]"
+                  "purviewResourceId": "[if(equals(parameters('purviewAccountID'), ''), null(), parameters('purviewAccountID'))]"
                 }
               }
             },
