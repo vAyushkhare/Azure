@@ -163,7 +163,7 @@
     "dataDisksLuns": "[array(range(0, parameters('sqlDataDisksCount')))]",
     "logDisksLuns": "[array(range(parameters('sqlDataDisksCount'), parameters('sqlLogDisksCount')))]",
     "dataDisks": {
-      "createOption": "fromImage",
+      "createOption": "Empty",
       "caching": "ReadOnly",
       "writeAcceleratorEnabled": false,
       "storageAccountType": "Premium_LRS",
@@ -256,8 +256,11 @@
             }
           },
           "imageReference": {
-                        "id": "/subscriptions/cbb956ec-6c04-42ae-8428-91d91154f780/resourceGroups/az-labs-aashik-testwithsqlvm-rg/providers/Microsoft.Compute/images/azlabssqlvm-image-20220816141300"
-                    }
+            "publisher": "MicrosoftSQLServer",
+            "offer": "[parameters('imageOffer')]",
+            "sku": "[parameters('sqlSku')]",
+            "version": "latest"
+          }
         },
         "networkProfile": {
           "networkInterfaces": [
