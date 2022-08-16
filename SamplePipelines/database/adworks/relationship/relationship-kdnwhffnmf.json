@@ -1,0 +1,23 @@
+{
+	"name": "relationship-kdnwhffnmf",
+	"properties": {
+		"Name": "relationship-kdnwhffnmf",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "adworks"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "CustomerData",
+		"ToTableName": "Country",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "CountryRegion",
+				"ToColumnName": "IsoCountryName"
+			}
+		],
+		"RelationshipType": 0
+	},
+	"type": "RELATIONSHIP"
+}

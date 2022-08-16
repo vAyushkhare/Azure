@@ -1,0 +1,23 @@
+{
+	"name": "relationship-dngliwnwob",
+	"properties": {
+		"Name": "relationship-dngliwnwob",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "adworks"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Sales",
+		"ToTableName": "Date",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "OrderDate",
+				"ToColumnName": "Date"
+			}
+		],
+		"RelationshipType": 0
+	},
+	"type": "RELATIONSHIP"
+}

@@ -1,0 +1,23 @@
+{
+	"name": "relationship-spacklmtsb",
+	"properties": {
+		"Name": "relationship-spacklmtsb",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "adworks"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Sales",
+		"ToTableName": "SalesTerritory",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "SalesTerritoryId",
+				"ToColumnName": "SalesTerritoryID"
+			}
+		],
+		"RelationshipType": 0
+	},
+	"type": "RELATIONSHIP"
+}

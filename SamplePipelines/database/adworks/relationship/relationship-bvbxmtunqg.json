@@ -1,0 +1,23 @@
+{
+	"name": "relationship-bvbxmtunqg",
+	"properties": {
+		"Name": "relationship-bvbxmtunqg",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "adworks"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Location",
+		"ToTableName": "Country",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "Country",
+				"ToColumnName": "IsoCountryName"
+			}
+		],
+		"RelationshipType": 0
+	},
+	"type": "RELATIONSHIP"
+}
