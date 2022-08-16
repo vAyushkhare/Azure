@@ -163,7 +163,7 @@
     "dataDisksLuns": "[array(range(0, parameters('sqlDataDisksCount')))]",
     "logDisksLuns": "[array(range(parameters('sqlDataDisksCount'), parameters('sqlLogDisksCount')))]",
     "dataDisks": {
-      "createOption": "Empty",
+      "createOption": "fromImage",
       "caching": "ReadOnly",
       "writeAcceleratorEnabled": false,
       "storageAccountType": "Premium_LRS",
