@@ -507,7 +507,7 @@
                             "properties": {
                                 "storageKey": "[parameters('_artifactsLocationSasToken')]",
                                 "storageKeyType": "SharedAccessKey",
-                                "storageUri": "[uri(parameters('_artifactsLocation'), 'templatefiles/AdventureWorks2016.bacpac')]",
+                                "storageUri": "[uri(parameters('_artifactsLocation'), 'templatefiles/AdventureWorksLT2019.bacpac')]",
                                 "administratorLogin": "[parameters('targetSqlDbAdministratorLogin')]",
                                 "administratorLoginPassword": "[parameters('targetSqlDbAdministratorPassword')]",
                                 "operationMode": "Import"
