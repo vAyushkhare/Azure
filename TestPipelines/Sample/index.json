@@ -139,42 +139,42 @@
             "pipelines": [
                 {
                     "name": "1_0 Main Pipeline",
-                    "interface": "rest",
+                    "interface": "powershell",
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/pipeline/1_0%20Main%20Pipeline.json"
                 },
                 {
                     "name": "2_0 adworks Starting Pipeline",
-                    "interface": "rest",
+                    "interface": "powershell",
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/pipeline/2_0%20adworks%20Starting%20Pipeline.json"
                 },
                 {
                     "name": "2_1 Copy CSV data from GitHub",
-                    "interface": "rest",
+                    "interface": "powershell",
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/pipeline/2_1%20Copy%20CSV%20data%20from%20GitHub.json"
                 },
                 {
                     "name": "2_2 Load CSV data to adworks",
-                    "interface": "rest",
+                    "interface": "powershell",
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/pipeline/2_2%20Load%20CSV%20data%20to%20adworks.json"
                 },
                 {
                     "name": "3_0 adworkstarget Starting Pipeline",
-                    "interface": "rest",
+                    "interface": "powershell",
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/pipeline/3_0%20adworkstarget%20Starting%20Pipeline.json"
                 },
                 {
                     "name": "3_1 IndependentDimensions",
-                    "interface": "rest",
+                    "interface": "powershell",
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/pipeline/3_1%20IndependentDimensions.json"
                 },
                 {
                     "name": "3_2 DependentDimensions",
-                    "interface": "rest",
+                    "interface": "powershell",
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/pipeline/3_2%20DependentDimensions.json"
                 },
                 {
                     "name": "3_3 FactTables",
-                    "interface": "rest",
+                    "interface": "powershell",
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/pipeline/3_3%20FactTables.json"
                 }  
             
@@ -182,17 +182,17 @@
             "datasets":[
                 {
                     "name": "GithubCSVFiles",
-                    "interface": "rest",
+                    "interface": "powershell",
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataset/GithubCSVFiles.json"
                 },
                 {
                     "name": "Raw",
-                    "interface": "rest",
+                    "interface": "powershell",
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataset/Raw.json"
                 },
                 {
                     "name": "adworksRaw",
-                    "interface": "rest",
+                    "interface": "powershell",
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataset/adworksRaw.json"
                 }  
             
@@ -200,12 +200,12 @@
             "notebooks": [
                {
                     "name": "CSV - Product recommendations",
-                    "interface": "rest",
+                    "interface": "powershell",
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/notebook/CSV%20-%20Product%20recommendations.json"
                 },
                 {
                     "name": "LakeDB - Product recommendations",
-                    "interface": "rest",
+                    "interface": "powershell",
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/notebook/LakeDB%20-%20Product%20recommendations.json"
                 }
             ],
