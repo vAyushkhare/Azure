@@ -495,25 +495,7 @@
                         "collation": "SQL_Latin1_General_CP1_CI_AS",
                         "maxSizeBytes": 2147483648,
                         "zoneRedundant": false
-                    },
-                    "resources": [
-                        {
-                            "name": "Import",
-                            "type": "extensions",
-                            "apiVersion": "2014-04-01",
-                            "dependsOn": [
-                                "[resourceId('Microsoft.Sql/servers/databases', variables('targetServerName'), variables('databaseName'))]"
-                            ],
-                            "properties": {
-                                "storageKey": "[parameters('_artifactsLocationSasToken')]",
-                                "storageKeyType": "SharedAccessKey",
-                                "storageUri": "[uri(parameters('_artifactsLocation'), 'templatefiles/AdventureWorksLT2019.bacpac')]",
-                                "administratorLogin": "[parameters('targetSqlDbAdministratorLogin')]",
-                                "administratorLoginPassword": "[parameters('targetSqlDbAdministratorPassword')]",
-                                "operationMode": "Import"
-                            }
-                        }
-                    ]
+                    }
                 },
                 {
                     "type": "firewallrules",
