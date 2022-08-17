@@ -136,7 +136,49 @@
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/sqlscript/adworks%20Row%20Counts.json"
                 }
             ],
-            "pipelines": [],
+            "pipelines": [
+                {
+                    "name": "1_0 Main Pipeline",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/pipeline/1_0%20Main%20Pipeline.json"
+                },
+                {
+                    "name": "2_0 adworks Starting Pipeline",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/pipeline/2_0%20adworks%20Starting%20Pipeline.json"
+                },
+                {
+                    "name": "2_1 Copy CSV data from GitHub",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/pipeline/2_1%20Copy%20CSV%20data%20from%20GitHub.json"
+                },
+                {
+                    "name": "2_2 Load CSV data to adworks",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/pipeline/2_2%20Load%20CSV%20data%20to%20adworks.json"
+                },
+                {
+                    "name": "3_0 adworkstarget Starting Pipeline",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/pipeline/3_0%20adworkstarget%20Starting%20Pipeline.json"
+                },
+                {
+                    "name": "3_1 IndependentDimensions",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/pipeline/3_1%20IndependentDimensions.json"
+                },
+                {
+                    "name": "3_2 DependentDimensions",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/pipeline/3_2%20DependentDimensions.json"
+                },
+                {
+                    "name": "3_3 FactTables",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/pipeline/3_3%20FactTables.json"
+                }  
+            
+            ],
             "datasets":[
                 {
                     "name": "GithubCSVFiles",
