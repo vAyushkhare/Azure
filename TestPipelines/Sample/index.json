@@ -76,7 +76,7 @@
                 {
                     "name": "01 - Using Azure Open Datasets in Synapse",
                     "interface": "powershell",
-                    "definitionFilePath": "https://raw.githubusercontent.com/Azure/azure-synapse-analytics-end2end/main/Sample/OpenDatasets/Notebooks/01-UsingOpenDatasetsSynapse.ipynb",
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/TestPipelines/Sample/OpenDatasets/Notebooks/01-UsingOpenDatasetsSynapse.ipynb",
                     "workspaceFolderPath": "OpenDatasets",
                     "tokens": []
                 },
@@ -127,7 +127,7 @@
                 {
                     "name": "nyc_tlc_yellow",
                     "interface": "powershell",
-                    "definitionFilePath": "https://raw.githubusercontent.com/Azure/azure-synapse-analytics-end2end/main/Sample/OpenDatasets/LinkedServices/nyc_tlc_yellow.json",
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/TestPipelines/Sample/OpenDatasets/LinkedServices/nyc_tlc_yellow.json",
                     "tokens": []
                 }
             ]
