@@ -137,7 +137,24 @@
                 }
             ],
             "pipelines": [],
-            "datasets":[],
+            "datasets":[
+                {
+                    "name": "GithubCSVFiles",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataset/GithubCSVFiles.json"
+                },
+                {
+                    "name": "Raw",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataset/Raw.json"
+                },
+                {
+                    "name": "adworksRaw",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataset/adworksRaw.json"
+                }  
+            
+            ],
             "notebooks": [
                {
                     "name": "CSV - Product recommendations",
