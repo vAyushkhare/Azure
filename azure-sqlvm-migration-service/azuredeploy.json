@@ -266,7 +266,7 @@
                     "location": "[parameters('location')]",
                     "properties": {
                         "sourcePlatform": "SQL",
-                        "targetPlatform": "SQL"
+                        "targetPlatform": "SQLVM"
                     },
                     "dependsOn": [
                         "[resourceId('Microsoft.DataMigration/services', variables('DMSServiceName'))]"
