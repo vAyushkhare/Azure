@@ -253,7 +253,7 @@
                         "createOption": "attach",
                         "osType": "Windows",
                         "managedDisk": {
-                            "id": "/subscriptions/cbb956ec-6c04-42ae-8428-91d91154f780/resourceGroups/az-labs-aashik-testwithsqlvm-rg/providers/Microsoft.Compute/disks/Testwithsnapshotdisk"
+                            "id": "/subscriptions/cbb956ec-6c04-42ae-8428-91d91154f780/resourceGroups/az-labs-samplesnapshotvm-rg/providers/Microsoft.Compute/disks/snapshotdiskexample"
                     }
           }
         },
