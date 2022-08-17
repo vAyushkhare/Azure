@@ -163,7 +163,7 @@
     "dataDisksLuns": "[array(range(0, parameters('sqlDataDisksCount')))]",
     "logDisksLuns": "[array(range(parameters('sqlDataDisksCount'), parameters('sqlLogDisksCount')))]",
     "dataDisks": {
-      "createOption": "Empty",
+      "createOption": "fromImage",
       "caching": "ReadOnly",
       "writeAcceleratorEnabled": false,
       "storageAccountType": "Premium_LRS",
@@ -250,12 +250,14 @@
             }
           ],
           "osDisk": {
-                        "createOption": "attach",
-                        "osType": "Windows",
-                        "managedDisk": {
-                            "id": "/subscriptions/cbb956ec-6c04-42ae-8428-91d91154f780/resourceGroups/az-labs-samplesnapshotvm-rg/providers/Microsoft.Compute/disks/snapshotdiskexample"
+            "createOption": "FromImage",
+            "managedDisk": {
+              "storageAccountType": "Premium_LRS"
+            }
+          },
+                    "imageReference": {
+                        "id": "/subscriptions/cbb956ec-6c04-42ae-8428-91d91154f780/resourceGroups/az-labs-testforsourcemigration-rg/providers/Microsoft.Compute/galleries/testforsourcemigration/images/testforsourcemigrationvm"
                     }
-          }
         },
         "networkProfile": {
           "networkInterfaces": [
