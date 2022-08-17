@@ -61,6 +61,7 @@
         }
     },
     "variables": {
+        "DMSServiceName": "[concat('DMS', uniqueString(resourceGroup().id))]",
         "sourceServerName": "[take(concat('Source', uniqueString(resourceGroup().id)), 15)]",
         "targetServerName": "[take(concat('Target', uniqueString(resourceGroup().id)), 15)]",
         "scriptLocation": "AddDatabaseToSqlServer.ps1",
@@ -224,6 +225,38 @@
                         }
                     }
                 }
+            ]
+        },
+        {
+            "type": "Microsoft.DataMigration/services",
+            "sku": {
+                "name": "Standard_4vCores",
+                "tier": "Standard",
+                "size": "4 vCores"
+            },
+            "name": "[variables('DMSServiceName')]",
+            "apiVersion": "2018-07-15-preview",
+            "location": "[parameters('location')]",
+            "properties": {
+                "virtualSubnetId": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('adVNet'), variables('defaultSubnetName'))]"
+            },
+            "resources": [
+                {
+                    "type": "projects",
+                    "name": "SqlToSqlVMMigrationProject",
+                    "apiVersion": "2018-07-15-preview",
+                    "location": "[parameters('location')]",
+                    "properties": {
+                        "sourcePlatform": "SQL",
+                        "targetPlatform": "SQL"
+                    },
+                    "dependsOn": [
+                        "[resourceId('Microsoft.DataMigration/services', variables('DMSServiceName'))]"
+                    ]
+                }
+            ],
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('adVNet'), variables('defaultSubnetName'))]"
             ]
         },
         {
