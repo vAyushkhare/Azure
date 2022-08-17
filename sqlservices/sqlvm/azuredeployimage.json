@@ -263,15 +263,6 @@
               "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
             }
           ]
-        },
-        "osProfile": {
-          "computerName": "[parameters('virtualMachineName')]",
-          "adminUsername": "[parameters('adminUsername')]",
-          "adminPassword": "[parameters('adminPassword')]",
-          "windowsConfiguration": {
-            "enableAutomaticUpdates": true,
-            "provisionVMAgent": true
-          }
         }
       },
       "dependsOn": [
