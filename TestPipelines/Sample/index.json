@@ -138,7 +138,18 @@
             ],
             "pipelines": [],
             "datasets":[],
-            "notebooks": [],
+            "notebooks": [
+               {
+                    "name": "CSV - Product recommendations",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/notebook/CSV%20-%20Product%20recommendations.json"
+                },
+                {
+                    "name": "LakeDB - Product recommendations",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/notebook/LakeDB%20-%20Product%20recommendations.json"
+                }
+            ],
             "linkedServices":[
                 {
                     "name": "AzureBlobStorageSCD",
