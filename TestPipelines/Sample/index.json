@@ -114,6 +114,13 @@
                     "definitionFilePath": "https://raw.githubusercontent.com/Azure/azure-synapse-analytics-end2end/main/Sample/OpenDatasets/Notebooks/06-ChartingSynapseNotebook.ipynb",
                     "workspaceFolderPath": "OpenDatasets",
                     "tokens": []
+                },
+                {
+                    "name": "CSV - Product recommendations",
+                    "interface": "powershell",
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/TestPipelines/Sample/OpenDatasets/Notebooks/CSV%20-%20Product%20recommendations.json",
+                    "workspaceFolderPath": "OpenDatasets",
+                    "tokens": []
                 }
             ],
             "linkedServices":[
