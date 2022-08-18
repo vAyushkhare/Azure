@@ -68,7 +68,7 @@
     },
     "sampleArtifactCollectionName": {
       "type": "string",
-      "defaultValue": "OpenDatasets",
+      "defaultValue": "SynapseRetail",
       "allowedValues": [
         "OpenDatasets",
         "SynapseRetail"
