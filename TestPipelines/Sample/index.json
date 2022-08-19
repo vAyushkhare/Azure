@@ -139,67 +139,19 @@
             "pipelines": [],
             "datasets":[],
             "notebooks": [],
-            "linkedServices":[
-                {
-                    "name": "AzureBlobStorageSCD",
-                    "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/AzureBlobStorageSCD.json"
-                },
-                {
-                    "name": "AzureMLService01",
-                    "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/AzureMLService01.json"
-                },
+            "linkedServices":[                            
                 {
                     "name": "GithubFiles",
                     "interface": "rest",
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/GithubFiles.json"
                 },
-                {
-                    "name": "azcurateddatalakego2d3",
-                    "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/azcurateddatalakego2d3.json"
-                },
-                {
-                    "name": "azkeyvaultgo2d3",
-                    "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/azkeyvaultgo2d3.json"
-                },
+                
                 {
                     "name": "azrawdatalakego2d3",
                     "interface": "rest",
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/azrawdatalakego2d3.json"
-                },
-                {
-                    "name": "azsynapsewksgo2d3-WorkspaceDefaultSqlServer",
-                    "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/azsynapsewksgo2d3-WorkspaceDefaultSqlServer.json"
-                },
-                {
-                    "name": "azsynapsewksgo2d3-WorkspaceDefaultStorage",
-                    "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/azsynapsewksgo2d3-WorkspaceDefaultStorage.json"
-                },
-                {
-                    "name": "azwksdatalakego2d3",
-                    "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/azwksdatalakego2d3.json"
-                },
-                {
-                    "name": "e2eanalytics01",
-                    "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/e2eanalytics01.json"
-                },
-                {
-                    "name": "githubsynaoseretail",
-                    "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/githubsynaoseretail.json"
-                },
-                {
-                    "name": "powerbiws1",
-                    "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/powerbiws1.json"
                 }
+                                
             ],
             "dataflows":[
                 {
