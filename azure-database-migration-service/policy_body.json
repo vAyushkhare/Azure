@@ -1,0 +1,69 @@
+{
+  "permissions": [
+    {
+      "actions": ["*"],
+      "notActions": [
+        "Microsoft.Authorization/*/Delete",
+        "Microsoft.Authorization/*/Write",
+        "Microsoft.Authorization/elevateAccess/Action",
+        "Microsoft.MarketplaceOrdering/*",
+        "Microsoft.Resources/tags/write",
+        "Microsoft.Resources/tags/delete"
+      ]
+    }
+  ],
+  "parameters": {
+    "allowedLocations": {
+      "type": "array",
+      "metadata": {
+        "description": "The list of locations that can be specified when deploying resources",
+        "strongType": "location",
+        "displayName": "Allowed locations"
+      }
+    },
+    "allowedServices": {
+      "type": "array",
+      "metadata": {
+        "description": "The list of allowed services",
+        "displayName": "Allowed services"
+      }
+    }
+  },
+  "displayName": "Azure CLI Policy",
+  "description": "This policy restricts what is allowed in the Azure CLI Lab.",
+  "policyRule": {
+    "if": {
+      "anyOf": [
+        {
+          "not": {
+            "field": "type",
+            "in": "[parameters('allowedServices')]"
+          }
+        },
+        {
+          "not": {
+            "field": "location",
+            "in": "[parameters('allowedLocations')]"
+          }
+        }
+      ]
+    },
+    "then": {
+      "effect": "deny"
+    }
+  },
+  "parameters_values": {
+    "allowedLocations": {
+      "value": ["westus", "southcentralus", "{RGLocation}"]
+    },
+    "allowedServices": {
+      "value": [
+        "Microsoft.Storage/storageAccounts",
+        "Microsoft.Resources/deployments",
+        "Microsoft.OperationalInsights/workspaces",
+        "Microsoft.OperationalInsights/solutions",
+        "Microsoft.OperationsManagement/solutions"
+      ]
+    }
+  }
+}
