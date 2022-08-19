@@ -17,18 +17,21 @@
             }
         },
         "sourceWindowsAdminUserName": {
+            "defaultValue": "sqladmin",
             "type": "string",
             "metadata": {
                 "description": "Windows Authentication user name for the source server"
             }
         },
         "sourceWindowsAdminPassword": {
+            "defaultValue": "Password@123",
             "type": "securestring",
             "metadata": {
                 "description": "Windows Authentication password for the source server"
             }
         },
         "sourceSqlAuthenticationPassword": {
+            "defaultValue": "Password@123",
             "type": "securestring",
             "metadata": {
                 "description": "Sql Authentication password for the source server (User name will be same as Windows Auth)"
@@ -42,12 +45,14 @@
             "defaultValue": "Standard_D8s_v3"
         },
         "targetSqlDbAdministratorLogin": {
+            "defaultValue": "sqladmin",
             "type": "string",
             "metadata": {
                 "description": "Administrator User name for the Target Azure SQL DB Server."
             }
         },
         "targetSqlDbAdministratorPassword": {
+            "defaultValue": "Password@123",
             "type": "securestring",
             "metadata": {
                 "description": "Administrator Password for the Target Azure SQL DB Server."
