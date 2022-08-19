@@ -137,19 +137,37 @@
                 }
             ],
             "pipelines": [],
-            "datasets":[],
+            "datasets":[
+                 {
+                    "name": "GithubCSVFiles",                    
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataset/GithubCSVFiles.json",
+                     "tokens": []
+                },
+                {
+                    "name": "Raw",                    
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataset/Raw.json",
+                    "tokens": []
+                },
+                {
+                    "name": "adworksRaw",                    
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataset/adworksRaw.json",
+                    "tokens": []
+                }
+            
+            
+            ],
             "notebooks": [],
             "linkedServices":[                            
                 {
-                    "name": "GithubFiles",
-                    "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/GithubFiles.json"
+                    "name": "GithubFiles",                    
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/GithubFiles.json",
+                    "tokens": []
                 },
                 
                 {
-                    "name": "azrawdatalakego2d3",
-                    "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/azrawdatalakego2d3.json"
+                    "name": "azrawdatalakego2d3",                    
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/azrawdatalakego2d3.json",
+                    "tokens": []
                 }
                                 
             ],
