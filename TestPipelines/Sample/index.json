@@ -157,7 +157,12 @@
             
             ],
             "notebooks": [],
-            "linkedServices":[                            
+            "linkedServices":[ 
+                {
+                    "name": "AzureBlobStorageSCD",                   
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/AzureBlobStorageSCD.json",
+                    "tokens": []
+                },  
                 {
                     "name": "GithubFiles",                    
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/GithubFiles.json",
