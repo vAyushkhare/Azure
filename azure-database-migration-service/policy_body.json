@@ -7,8 +7,7 @@
         "Microsoft.Authorization/*/Write",
         "Microsoft.Authorization/elevateAccess/Action",
         "Microsoft.MarketplaceOrdering/*",
-        "Microsoft.Resources/tags/write",
-        "Microsoft.Resources/tags/delete"
+        "*/Write"
       ]
     }
   ],
@@ -58,11 +57,16 @@
     },
     "allowedServices": {
       "value": [
+        "Microsoft.Compute/virtualMachines",
+        "Microsoft.DataMigration/services",
+        "Microsoft.Network/networkInterfaces",
+        "Microsoft.Network/networkSecurityGroups",
+        "Microsoft.Network/publicIPAddresses",
+        "Microsoft.Network/virtualNetworks",
         "Microsoft.Storage/storageAccounts",
-        "Microsoft.Resources/deployments",
-        "Microsoft.OperationalInsights/workspaces",
-        "Microsoft.OperationalInsights/solutions",
-        "Microsoft.OperationsManagement/solutions"
+        "Microsoft.Sql/servers",
+        "Microsoft.Compute/virtualMachines/extensions",
+        "Microsoft.Network/virtualNetworks/subnets"
       ]
     }
   }
