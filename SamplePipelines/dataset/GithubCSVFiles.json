@@ -5,8 +5,8 @@
 			"referenceName": "GithubFiles",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"githubAccount": "jchinchillaMSFT",
-				"projectName": "ww-csu-psk-synapse-retail",
+				"githubAccount": "CSALabsAutomation",
+				"projectName": "quickstart-templates",
 				"branch": "main",
 				"folderPath": {
 					"value": "@dataset().folderPath",
