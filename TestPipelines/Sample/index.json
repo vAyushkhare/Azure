@@ -139,19 +139,22 @@
             "pipelines": [],
             "datasets":[
                  {
-                    "name": "GithubCSVFiles",                    
-                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/dataset/GithubCSVFiles.json",
-                     "tokens": []
+                    "name": "GithubCSVFiles",
+                     "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/dataset/GithubCSVFiles.json"
+                     
                 },
                 {
-                    "name": "Raw",                    
-                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/dataset/Raw.json",
-                    "tokens": []
+                    "name": "Raw",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/dataset/Raw.json"
+                    
                 },
                 {
-                    "name": "adworksRaw",                    
-                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/dataset/adworksRaw.json",
-                    "tokens": []
+                    "name": "adworksRaw",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/dataset/adworksRaw.json"
+                   
                 }
             
             
@@ -159,20 +162,23 @@
             "notebooks": [],
             "linkedServices":[ 
                 {
-                    "name": "AzureBlobStorageSCD",                   
-                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/linkedService/AzureBlobStorageSCD.json",
-                    "tokens": []
+                    "name": "AzureBlobStorageSCD",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/linkedService/AzureBlobStorageSCD.json"
+                    
                 },  
                 {
-                    "name": "GithubFiles",                    
-                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/linkedService/GithubFiles.json",
-                    "tokens": []
+                    "name": "GithubFiles",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/linkedService/GithubFiles.json"
+                    
                 },
                 
                 {
-                    "name": "azrawdatalakego2d3",                    
-                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/linkedService/azrawdatalakego2d3.json",
-                    "tokens": []
+                    "name": "azrawdatalakego2d3",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/linkedService/azrawdatalakego2d3.json"
+                    
                 }
                                 
             ],
