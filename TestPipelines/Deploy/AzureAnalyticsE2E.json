@@ -474,7 +474,7 @@
       "[parameters('dataLakeTrustedZoneName')]",
       "[parameters('dataLakeCuratedZoneName')]"
     ],
-    "synapsePSScriptLocation": "aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0F6dXJlL2F6dXJlLXN5bmFwc2UtYW5hbHl0aWNzLWVuZDJlbmQvbWFpbi9EZXBsb3kvc2NyaXB0cy9TeW5hcHNlUG9zdERlcGxveS5wczE=",
+    "synapsePSScriptLocation": "aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3ZBeXVzaGtoYXJlL0F6dXJlL21haW4vVGVzdFBpcGVsaW5lcy9EZXBsb3kvc2NyaXB0cy9TeW5hcHNlUG9zdERlcGxveS5wczE=",
     "azMLWorkspaceName": "[if(parameters('ctrlDeployAI'), format('-AzMLWorkspaceName {0}', parameters('azureMLWorkspaceName')), '')]",
     "sampleArtifactsParams": "[if(parameters('ctrlDeploySampleArtifacts'), format('-CtrlDeploySampleArtifacts $True -SampleArtifactCollectioName {0}', parameters('sampleArtifactCollectionName')), '')]",
     "purviewPSScriptLocation": "aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0F6dXJlL2F6dXJlLXN5bmFwc2UtYW5hbHl0aWNzLWVuZDJlbmQvbWFpbi9EZXBsb3kvc2NyaXB0cy9QdXJ2aWV3UG9zdERlcGxveS5wczE=",
