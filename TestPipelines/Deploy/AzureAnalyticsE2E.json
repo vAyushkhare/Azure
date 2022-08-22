@@ -64,14 +64,15 @@
     },
     "ctrlDeploySampleArtifacts": {
       "type": "bool",
-      "defaultValue": true
+      "defaultValue": false
     },
     "sampleArtifactCollectionName": {
       "type": "string",
-      "defaultValue": "SynapseRetail",
+      "defaultValue": "OpenDatasets",
       "allowedValues": [
         "OpenDatasets",
-        "SynapseRetail"
+        "SynapseRetail",
+        "OpenDatasets"
       ]
     },
     "ctrlNewOrExistingVNet": {
@@ -137,7 +138,7 @@
     },
     "rawDataLakeAccountName": {
       "type": "string",
-      "defaultValue": "azrawdatalakego2d3",
+      "defaultValue": "[format('azrawdatalake{0}', parameters('uniqueSuffix'))]",
       "metadata": {
         "description": "Synapse Workspace Data Lake Storage Account Name"
       }
@@ -220,7 +221,7 @@
     },
     "ctrlDeploySynapseSQLPool": {
       "type": "bool",
-      "defaultValue": true,
+      "defaultValue": false,
       "metadata": {
         "description": "Deploy SQL Pool"
       }
@@ -241,7 +242,7 @@
     },
     "ctrlDeploySynapseSparkPool": {
       "type": "bool",
-      "defaultValue": true,
+      "defaultValue": false,
       "metadata": {
         "description": "Deploy Spark Pool"
       }
