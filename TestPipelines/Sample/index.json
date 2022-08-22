@@ -144,6 +144,11 @@
                     "name": "AzureBlobStorageSCD",
                     "interface": "rest",
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/AzureBlobStorageSCD.json"
+                },
+                {
+                    "name": "AzureBlobStorageAy",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/vAyushkhare/Azure/main/TestPipelines/Deploy/modules/newls.json"
                 }
             ],
             "dataflows":[
