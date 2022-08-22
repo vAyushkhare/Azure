@@ -140,17 +140,17 @@
             "datasets":[
                  {
                     "name": "GithubCSVFiles",                    
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataset/GithubCSVFiles.json",
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/dataset/GithubCSVFiles.json",
                      "tokens": []
                 },
                 {
                     "name": "Raw",                    
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataset/Raw.json",
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/dataset/Raw.json",
                     "tokens": []
                 },
                 {
                     "name": "adworksRaw",                    
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataset/adworksRaw.json",
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/dataset/adworksRaw.json",
                     "tokens": []
                 }
             
@@ -160,18 +160,18 @@
             "linkedServices":[ 
                 {
                     "name": "AzureBlobStorageSCD",                   
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/AzureBlobStorageSCD.json",
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/linkedService/AzureBlobStorageSCD.json",
                     "tokens": []
                 },  
                 {
                     "name": "GithubFiles",                    
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/GithubFiles.json",
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/linkedService/GithubFiles.json",
                     "tokens": []
                 },
                 
                 {
                     "name": "azrawdatalakego2d3",                    
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/azrawdatalakego2d3.json",
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/linkedService/azrawdatalakego2d3.json",
                     "tokens": []
                 }
                                 
@@ -180,37 +180,37 @@
                 {
                     "name": "DimChannel_DF",
                     "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataflow/DimChannel_DF.json"
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/dataflow/DimChannel_DF.json"
                 },
                 {
                     "name": "DimCustomer_DF",
                     "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataflow/DimCustomer_DF.json"
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/dataflow/DimCustomer_DF.json"
                 },
                 {
                     "name": "DimDate_DF",
                     "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataflow/DimDate_DF.json"
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/dataflow/DimDate_DF.json"
                 },
                 {
                     "name": "DimGeography_DF",
                     "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataflow/DimGeography_DF.json"
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/dataflow/DimGeography_DF.json"
                 },
                 {
                     "name": "DimProduct_DF",
                     "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataflow/DimProduct_DF.json"
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/dataflow/DimProduct_DF.json"
                 },
                 {
                     "name": "FactSales_DF",
                     "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataflow/FactSales_DF.json"
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/dataflow/FactSales_DF.json"
                 },
                 {
                     "name": "adworks_DF",
                     "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataflow/adworks_DF.json"
+                    "definitionFilePath": "https://raw.githubusercontent.com/CSALabsAutomation/quickstart-templates/main/SamplePipelines/dataflow/adworks_DF.json"
                 }
             ],
             "databases": [
