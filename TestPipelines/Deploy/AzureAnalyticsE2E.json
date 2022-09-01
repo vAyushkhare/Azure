@@ -72,7 +72,7 @@
       "allowedValues": [
         "OpenDatasets",
         "SynapseRetail",
-        "OpenDatasets"
+        "OneClickPoC"
       ]
     },
     "ctrlNewOrExistingVNet": {
