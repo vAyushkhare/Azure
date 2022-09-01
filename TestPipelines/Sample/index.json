@@ -124,10 +124,9 @@
                     "tokens": []
                 },
                 {
-                    "name": "aksadlsstorage",
+                    "name": "aksadlsstorage1",
                     "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/vAyushkhare/Azure/main/TestPipelines/Deploy/modules/newls.json",
-                    "tokens": []
+                    "definitionFilePath": "https://raw.githubusercontent.com/vAyushkhare/Azure/main/TestPipelines/Deploy/modules/newls.json"
                 }
             ]
         }
