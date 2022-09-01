@@ -125,7 +125,7 @@
                 },
                 {
                     "name": "aksadlsstorage",
-                    "interface": "powershell",
+                    "interface": "rest",
                     "definitionFilePath": "https://raw.githubusercontent.com/vAyushkhare/Azure/main/TestPipelines/Deploy/modules/newls.json",
                     "tokens": []
                 }
