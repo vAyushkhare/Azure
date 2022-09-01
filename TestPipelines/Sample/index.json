@@ -136,53 +136,52 @@
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/sqlscript/adworks%20Row%20Counts.json"
                 }
             ],
-            "pipelines": [
-                {
-                    "name": "2_1 Copy CSV data from GitHub",
-                    "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/pipeline/2_1%20Copy%20CSV%20data%20from%20GitHub.json"
-                },
-            ],
-            "datasets":[
-                 {
-                    "name": "GithubCSVFiles",
-                    "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataset/GithubCSVFiles.json"
-                },
-                {
-                    "name": "adworksRaw",
-                    "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataset/adworksRaw.json"
-                }
-            
-            ],
+            "pipelines": [],
+            "datasets":[],
             "notebooks": [],
             "linkedServices":[
-                
                 {
-                    "name": "GithubFiles",
+                    "name": "AzureBlobStorageSCD",
                     "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/GithubFiles.json"
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/AzureBlobStorageSCD.json"
                 }
-                {
-                    "name": "azrawdatalakego2d3",
-                    "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/azrawdatalakego2d3.json"
-                },
-                {
-                    "name": "AzureBlobStorageAy",
-                    "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/vAyushkhare/Azure/main/TestPipelines/Deploy/modules/newls.json"
-                }
-                
             ],
             "dataflows":[
-               
+                {
+                    "name": "DimChannel_DF",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataflow/DimChannel_DF.json"
+                },
                 {
                     "name": "DimCustomer_DF",
                     "interface": "rest",
                     "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataflow/DimCustomer_DF.json"
-                }               
+                },
+                {
+                    "name": "DimDate_DF",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataflow/DimDate_DF.json"
+                },
+                {
+                    "name": "DimGeography_DF",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataflow/DimGeography_DF.json"
+                },
+                {
+                    "name": "DimProduct_DF",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataflow/DimProduct_DF.json"
+                },
+                {
+                    "name": "FactSales_DF",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataflow/FactSales_DF.json"
+                },
+                {
+                    "name": "adworks_DF",
+                    "interface": "rest",
+                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/dataflow/adworks_DF.json"
+                }
             ],
             "databases": [
                 {
