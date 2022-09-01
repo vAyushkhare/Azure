@@ -6,7 +6,7 @@
                 {
                     "name": "01 - Explore Open DataSet with SQL Serverless",
                     "interface": "powershell",
-                    "definitionFilePath": "https://raw.githubusercontent.com/Azure/azure-synapse-analytics-end2end/main/Sample/OpenDatasets/SQLScripts/Serverless/01.AnalyzeOpenDatasetSQLServerless.sql",
+                    "definitionFilePath": "https://raw.githubusercontent.com/vAyushkhare/Azure/main/TestPipelines/Sample/OpenDatasets/SQLScripts/Serverless/01.AnalyzeOpenDatasetSQLServerless.sql",
                     "workspaceFolderPath": "OpenDatasets/SQL Serverless",
                     "tokens": [
                         "##azsynapsewks##"
