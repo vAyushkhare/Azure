@@ -36,23 +36,23 @@
     },
     "ctrlDeployPurview": {
       "type": "bool",
-      "defaultValue": true
+      "defaultValue": false
     },
     "ctrlDeployAI": {
       "type": "bool",
-      "defaultValue": true
+      "defaultValue": false
     },
     "ctrlDeployStreaming": {
       "type": "bool",
-      "defaultValue": true
+      "defaultValue": false
     },
     "ctrlDeployDataShare": {
       "type": "bool",
-      "defaultValue": true
+      "defaultValue": false
     },
     "ctrlDeployPrivateDNSZones": {
       "type": "bool",
-      "defaultValue": true
+      "defaultValue": false
     },
     "ctrlDeployOperationalDB": {
       "type": "bool",
@@ -64,11 +64,11 @@
     },
     "ctrlDeploySampleArtifacts": {
       "type": "bool",
-      "defaultValue": false
+      "defaultValue": true
     },
     "sampleArtifactCollectionName": {
       "type": "string",
-      "defaultValue": "OpenDatasets",
+      "defaultValue": "SynapseRetail",
       "allowedValues": [
         "OpenDatasets",
         "SynapseRetail",
@@ -242,7 +242,7 @@
     },
     "ctrlDeploySynapseSparkPool": {
       "type": "bool",
-      "defaultValue": false,
+      "defaultValue": true,
       "metadata": {
         "description": "Deploy Spark Pool"
       }
