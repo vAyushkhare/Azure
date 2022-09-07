@@ -146,9 +146,9 @@
             "notebooks": [],
             "linkedServices":[
                 {
-                    "name": "AzureBlobStorageSCD",
+                    "name": "AzureBlobStorageAy",
                     "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/linkedService/AzureBlobStorageSCD.json"
+                    "definitionFilePath": "https://raw.githubusercontent.com/vAyushkhare/Azure/main/TestPipelines/Deploy/modules/newls.json"
                 }
             ],
             "dataflows":[
@@ -192,91 +192,15 @@
                 {
                     "name": "adworks",
                     "interface": "rest",
-                    "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/database/adworks.json",
+                    "definitionFilePath": "https://raw.githubusercontent.com/vAyushkhare/Azure/main/TestPipelines/Sample/database/adworks.json",
                     "tables": [
                         {
                             "name": "Calendar",
                             "interface": "rest",
-                            "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/database/adworks/table/Calendar.json"
-                        },
-                        {
-                            "name": "InternetCustomer",
-                            "interface": "rest",
-                            "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/database/adworks/table/InternetCustomer.json"
-                        },
-                        {
-                            "name": "Location",
-                            "interface": "rest",
-                            "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/database/adworks/table/Location.json"
-                        },
-                        {
-                            "name": "ProductData",
-                            "interface": "rest",
-                            "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/database/adworks/table/ProductData.json"
-                        },
-                        {
-                            "name": "Sales",
-                            "interface": "rest",
-                            "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/database/adworks/table/Sales.json"
-                        },
-                        {
-                            "name": "Reseller",
-                            "interface": "rest",
-                            "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/database/adworks/table/Reseller.json"
-                        },
-                        {
-                            "name": "SalesTerritory",
-                            "interface": "rest",
-                            "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/database/adworks/table/SalesTerritory.json"
-                        }
-                    ],
-                    "relationships":[
-                        {
-                            "name": "relationship-bvbxmtunqg",
-                            "interface": "rest",
-                            "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/database/adworks/relationship/relationship-bvbxmtunqg.json"
-                        },
-                        {
-                            "name": "relationship-dngliwnwob",
-                            "interface": "rest",
-                            "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/database/adworks/relationship/relationship-dngliwnwob.json"
-                        },
-                        {
-                            "name": "relationship-fybugkapdy",
-                            "interface": "rest",
-                            "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/database/adworks/relationship/relationship-fybugkapdy.json"
-                        },
-                        {
-                            "name": "relationship-icsxkfyxeh",
-                            "interface": "rest",
-                            "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/database/adworks/relationship/relationship-icsxkfyxeh.json"
-                        },
-                        {
-                            "name": "relationship-kdnwhffnmf",
-                            "interface": "rest",
-                            "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/database/adworks/relationship/relationship-kdnwhffnmf.json"
-                        },
-                        {
-                            "name": "relationship-somtklqqvv",
-                            "interface": "rest",
-                            "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/database/adworks/relationship/relationship-somtklqqvv.json"
-                        },
-                        {
-                            "name": "relationship-spacklmtsb",
-                            "interface": "rest",
-                            "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/database/adworks/relationship/relationship-spacklmtsb.json"
-                        },
-                        {
-                            "name": "relationship-uefhwxjtyv",
-                            "interface": "rest",
-                            "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/database/adworks/relationship/relationship-uefhwxjtyv.json"
-                        },
-                        {
-                            "name": "relationship-xggfxzuwec",
-                            "interface": "rest",
-                            "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/database/adworks/relationship/relationship-xggfxzuwec.json"
+                            "definitionFilePath": "https://raw.githubusercontent.com/vAyushkhare/Azure/main/TestPipelines/Sample/database/adworks/table/Calendar.json"
                         }
                     ]
+                    
                 }
             ]
         }
