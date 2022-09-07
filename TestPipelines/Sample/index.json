@@ -194,10 +194,10 @@
                     "interface": "rest",
                     "definitionFilePath": "https://raw.githubusercontent.com/vAyushkhare/Azure/main/TestPipelines/Sample/database/adworks.json",
                     "tables": [
-                        {
-                            "name": "Calendar",
+                       {
+                            "name": "Reseller",
                             "interface": "rest",
-                            "definitionFilePath": "https://raw.githubusercontent.com/vAyushkhare/Azure/main/TestPipelines/Sample/database/adworks/table/Calendar.json"
+                            "definitionFilePath": "https://raw.githubusercontent.com/jchinchillaMSFT/ww-csu-psk-synapse-retail/main/database/adworks/table/Reseller.json"
                         }
                     ]
                     
