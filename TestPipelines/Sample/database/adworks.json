@@ -11,7 +11,7 @@
 		},
 		"Source": {
 			"Provider": "ADLS",
-			"Location": "https://aksadlsstorage.blob.core.windows.net/filesystemay/Synapse Retail/ParquetFiles",
+			"Location": "abfss://filesystemay@aksadlsstorage.dfs.core.windows.net/Synapse Retail/ParquetFiles",
 			"Properties": {
 				"FormatType": "parquet",
 				"LinkedServiceName": "AzureBlobStorageAy"
