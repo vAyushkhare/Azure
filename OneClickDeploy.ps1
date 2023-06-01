@@ -48,7 +48,23 @@ Write-Output "Task: Generating Databricks Token"
     $BODY = @"
     { "lifetime_seconds": $LIFETIME_SECONDS, "comment": "$COMMENT" }
 "@
-    $DB_PAT = ((Invoke-RestMethod -Method POST -Uri "https://$REGION.azuredatabricks.net/api/2.0/token/create" -Headers $HEADERS -Body $BODY).token_value)
+
+try{
+$DB_PAT = ((Invoke-RestMethod -Method POST -Uri "https://$REGION.azuredatabricks.net/api/2.0/token/create" -Headers $HEADERS -Body $BODY).token_valu)
+}
+catch {
+Write-Output "Failed : First Attemt Generating token."
+try{
+Write-Output "Second Attemt Generating token:"
+$DB_PAT = ((Invoke-RestMethod -Method POST -Uri "https://$REGION.azuredatabricks.net/api/2.0/token/create" -Headers $HEADERS -Body $BODY).token_value)
+}
+catch {
+Write-Output "Failed : Second Attemt Generating token."
+}
+
+}
+
+    
     
 if ($CTRL_DEPLOY_CLUSTER) {
         
